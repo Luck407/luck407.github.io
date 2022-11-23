@@ -1,0 +1,378 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>ArchLinux发行版ManjaroKDE配置 | 风住尘香花已尽</title><meta name="author" content="Machilus"><meta name="copyright" content="Machilus"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="ArchLinux发行版ManjaroKDE配置1、列出国内镜像地址选择并跟换适合自己所在地区的源因为我所在的地区之前使用其它软件源老是出问题只有中科大的较为稳定我选中科大的源（https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;archlinuxcn&#x2F;$arch）。 1sudo pacman-mirrors -i -c China -m rank  2.修改配置文件（&#x2F;etc&amp;#x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ArchLinux发行版ManjaroKDE配置">
+<meta property="og:url" content="http://example.com/2022/11/23/ArchLinux%E5%8F%91%E8%A1%8C%E7%89%88ManjaroKDE%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="风住尘香花已尽">
+<meta property="og:description" content="ArchLinux发行版ManjaroKDE配置1、列出国内镜像地址选择并跟换适合自己所在地区的源因为我所在的地区之前使用其它软件源老是出问题只有中科大的较为稳定我选中科大的源（https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;archlinuxcn&#x2F;$arch）。 1sudo pacman-mirrors -i -c China -m rank  2.修改配置文件（&#x2F;etc&amp;#x">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-23T14:51:09.000Z">
+<meta property="article:modified_time" content="2022-11-23T14:52:06.283Z">
+<meta property="article:author" content="Machilus">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/11/23/ArchLinux%E5%8F%91%E8%A1%8C%E7%89%88ManjaroKDE%E9%85%8D%E7%BD%AE/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ArchLinux发行版ManjaroKDE配置',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-23 22:52:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="风住尘香花已尽" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">风住尘香花已尽</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ArchLinux发行版ManjaroKDE配置</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-23T14:51:09.000Z" title="发表于 2022-11-23 22:51:09">2022-11-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-23T14:52:06.283Z" title="更新于 2022-11-23 22:52:06">2022-11-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ArchLinux发行版ManjaroKDE配置"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="ArchLinux发行版ManjaroKDE配置"><a href="#ArchLinux发行版ManjaroKDE配置" class="headerlink" title="ArchLinux发行版ManjaroKDE配置"></a>ArchLinux发行版ManjaroKDE配置</h1><h2 id="1、列出国内镜像地址选择并跟换适合自己所在地区的源"><a href="#1、列出国内镜像地址选择并跟换适合自己所在地区的源" class="headerlink" title="1、列出国内镜像地址选择并跟换适合自己所在地区的源"></a>1、列出国内镜像地址选择并跟换适合自己所在地区的源</h2><p>因为我所在的地区之前使用其它软件源老是出问题只有中科大的较为稳定我选中科大的源（<a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/archlinuxcn/$arch%EF%BC%89%E3%80%82">https://mirrors.ustc.edu.cn/archlinuxcn/$arch）。</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-mirrors -i -c China -m rank</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-修改配置文件（-x2F-etc-x2F-pacman-conf）"><a href="#2-修改配置文件（-x2F-etc-x2F-pacman-conf）" class="headerlink" title="2.修改配置文件（&#x2F;etc&#x2F;pacman.conf）"></a>2.修改配置文件（&#x2F;etc&#x2F;pacman.conf）</h2><p>内置的编辑器有nano和kate</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/pacman.conf</span><br></pre></td></tr></table></figure>
+
+<p>结尾处追加写入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line"></span><br><span class="line">SigLevel = Optional TrustedOnly</span><br><span class="line"></span><br><span class="line">Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch</span><br></pre></td></tr></table></figure>
+
+<p>可能因为版本差异会存在些许差异附上整个源文件作为备份：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line">#</span><br><span class="line"># /etc/pacman.conf</span><br><span class="line">#</span><br><span class="line"># See the pacman.conf(5) manpage for option and repository directives</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># GENERAL OPTIONS</span><br><span class="line">#</span><br><span class="line">[options]</span><br><span class="line"># The following paths are commented out with their default values listed.</span><br><span class="line"># If you wish to use different paths, uncomment and update the paths.</span><br><span class="line">#RootDir     = /</span><br><span class="line">#DBPath      = /var/lib/pacman/</span><br><span class="line">CacheDir = /var/cache/pacman/pkg/</span><br><span class="line">#LogFile     = /var/log/pacman.log</span><br><span class="line">#GPGDir      = /etc/pacman.d/gnupg/</span><br><span class="line">#HookDir     = /etc/pacman.d/hooks/</span><br><span class="line">HoldPkg      = pacman glibc manjaro-system</span><br><span class="line"># If upgrades are available for these packages they will be asked for first</span><br><span class="line">SyncFirst    = manjaro-system archlinux-keyring manjaro-keyring</span><br><span class="line">#XferCommand = /usr/bin/curl -C - -f %u &gt; %o</span><br><span class="line">#XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u</span><br><span class="line">#CleanMethod = KeepInstalled</span><br><span class="line">#UseDelta    = 0.7</span><br><span class="line">Architecture = auto</span><br><span class="line"></span><br><span class="line"># Pacman won&#x27;t upgrade packages listed in IgnorePkg and members of IgnoreGroup</span><br><span class="line">#IgnorePkg   =</span><br><span class="line">#IgnoreGroup =</span><br><span class="line"></span><br><span class="line">#NoUpgrade   =</span><br><span class="line">#NoExtract   =</span><br><span class="line"></span><br><span class="line"># Misc options</span><br><span class="line">#UseSyslog</span><br><span class="line">#Color</span><br><span class="line">#TotalDownload</span><br><span class="line"># We cannot check disk space from within a chroot environment</span><br><span class="line">CheckSpace</span><br><span class="line">#VerbosePkgLists</span><br><span class="line"></span><br><span class="line"># By default, pacman accepts packages signed by keys that its local keyring</span><br><span class="line"># trusts (see pacman-key and its man page), as well as unsigned packages.</span><br><span class="line">SigLevel    = Required DatabaseOptional</span><br><span class="line">LocalFileSigLevel = Optional</span><br><span class="line">#RemoteFileSigLevel = Required</span><br><span class="line"></span><br><span class="line"># NOTE: You must run `pacman-key --init` before first using pacman; the local</span><br><span class="line"># keyring can then be populated with the keys of all official Manjaro Linux</span><br><span class="line"># packagers with `pacman-key --populate archlinux manjaro`.</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># REPOSITORIES</span><br><span class="line">#   - can be defined here or included from another file</span><br><span class="line">#   - pacman will search repositories in the order defined here</span><br><span class="line">#   - local/custom mirrors can be added here or in separate files</span><br><span class="line">#   - repositories listed first will take precedence when packages</span><br><span class="line">#     have identical names, regardless of version number</span><br><span class="line">#   - URLs will have $repo replaced by the name of the current repo</span><br><span class="line">#   - URLs will have $arch replaced by the name of the architecture</span><br><span class="line">#</span><br><span class="line"># Repository entries are of the format:</span><br><span class="line">#       [repo-name]</span><br><span class="line">#       Server = ServerName</span><br><span class="line">#       Include = IncludePath</span><br><span class="line">#</span><br><span class="line"># The header [repo-name] is crucial - it must be present and</span><br><span class="line"># uncommented to enable the repo.</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line"># The testing repositories are disabled by default. To enable, uncomment the</span><br><span class="line"># repo name header and Include lines. You can add preferred servers immediately</span><br><span class="line"># after the header, and they will be used before the default mirrors.</span><br><span class="line"></span><br><span class="line">[core]</span><br><span class="line">SigLevel = PackageRequired</span><br><span class="line">Include = /etc/pacman.d/mirrorlist</span><br><span class="line"></span><br><span class="line">[extra]</span><br><span class="line">SigLevel = PackageRequired</span><br><span class="line">Include = /etc/pacman.d/mirrorlist</span><br><span class="line"></span><br><span class="line">[community]</span><br><span class="line">SigLevel = PackageRequired</span><br><span class="line">Include = /etc/pacman.d/mirrorlist</span><br><span class="line"></span><br><span class="line"># If you want to run 32 bit applications on your x86_64 system,</span><br><span class="line"># enable the multilib repositories as required here.</span><br><span class="line"></span><br><span class="line">[multilib]</span><br><span class="line">SigLevel = PackageRequired</span><br><span class="line">Include = /etc/pacman.d/mirrorlist</span><br><span class="line"></span><br><span class="line"># An example of a custom package repository.  See the pacman manpage for</span><br><span class="line"># tips on creating your own repositories.</span><br><span class="line">#[custom]</span><br><span class="line">#SigLevel = Optional TrustAll</span><br><span class="line">#Server = file:///home/custompkgs</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-更新软件源配置文件使其生效"><a href="#3-更新软件源配置文件使其生效" class="headerlink" title="3.更新软件源配置文件使其生效"></a>3.更新软件源配置文件使其生效</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-mirrors -g</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-同步软件数据仓库"><a href="#4-同步软件数据仓库" class="headerlink" title="4.同步软件数据仓库"></a>4.同步软件数据仓库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syy</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-系统升级"><a href="#5-系统升级" class="headerlink" title="5.系统升级"></a>5.系统升级</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syu</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-全面更新系统"><a href="#6-全面更新系统" class="headerlink" title="6.全面更新系统"></a>6.全面更新系统</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syyu</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-安装archlinuxcn-keyring包导入GPG-key"><a href="#7-安装archlinuxcn-keyring包导入GPG-key" class="headerlink" title="7.安装archlinuxcn-keyring包导入GPG key"></a>7.安装archlinuxcn-keyring包导入GPG key</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-安装AUR包管理工具yay"><a href="#8-安装AUR包管理工具yay" class="headerlink" title="8.安装AUR包管理工具yay"></a>8.安装AUR包管理工具yay</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S yay</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-安装Fcitx5输入法"><a href="#9-安装Fcitx5输入法" class="headerlink" title="9.安装Fcitx5输入法"></a>9.安装Fcitx5输入法</h2><h4 id="9-1-首先卸载Fcitx4版本的套件"><a href="#9-1-首先卸载Fcitx4版本的套件" class="headerlink" title="9.1:首先卸载Fcitx4版本的套件"></a>9.1:首先卸载Fcitx4版本的套件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman Rc fcitx</span><br></pre></td></tr></table></figure>
+
+<h4 id="9-2-安装Fcitx5"><a href="#9-2-安装Fcitx5" class="headerlink" title="9.2:安装Fcitx5"></a>9.2:安装Fcitx5</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S fcitx5 fcitx5-chinese-addons fcitx5-chewing fcitx5-pinyin-zhwiki fcitx5-pinyin-moegirl fcitx5-config-qt fcitx5-gtk</span><br></pre></td></tr></table></figure>
+
+<h4 id="9-3-写入配置-x2F-xprofile"><a href="#9-3-写入配置-x2F-xprofile" class="headerlink" title="9.3:写入配置(~&#x2F;.xprofile)"></a>9.3:写入配置(~&#x2F;.xprofile)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kate ~/.xprofile</span><br></pre></td></tr></table></figure>
+
+<p>写入一下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export GTK_IM_MODULE=fcitx5</span><br><span class="line">export QT_IM_MODULE=fcitx5</span><br><span class="line">export XMODIFIERS=&quot;@im=fcitx5&quot;</span><br><span class="line">#设置开机自启</span><br><span class="line">fcitx5 &amp;</span><br></pre></td></tr></table></figure>
+
+<h4 id="9-4-编辑文件-x2F-xinitrc"><a href="#9-4-编辑文件-x2F-xinitrc" class="headerlink" title="9.4:编辑文件(~&#x2F;.xinitrc)"></a>9.4:编辑文件(~&#x2F;.xinitrc)</h4><p>命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kate ~/.xinitrc</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>注意：在exec $(get_session)之前加入，exec $(get_session)这行内容在结尾处</strong></em></p>
+<p>写入内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#__________________________华丽的分割线___________________________</span><br><span class="line">export GTK_IM_MODULE=fcitx5</span><br><span class="line">export XMODIFIERS=@im=fcitx5</span><br><span class="line">export QT_IM_MODULE=fcitx5</span><br></pre></td></tr></table></figure>
+
+<p>附上源配置文件作为备份：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">#</span><br><span class="line"># ~/.xinitrc</span><br><span class="line">#</span><br><span class="line"># Executed by startx (run your window manager from here)</span><br><span class="line"></span><br><span class="line">userresources=$HOME/.Xresources</span><br><span class="line">usermodmap=$HOME/.Xmodmap</span><br><span class="line">sysresources=/etc/X11/xinit/.Xresources</span><br><span class="line">sysmodmap=/etc/X11/xinit/.Xmodmap</span><br><span class="line"></span><br><span class="line">DEFAULT_SESSION=startplasma-x11</span><br><span class="line"></span><br><span class="line"># merge in defaults and keymaps</span><br><span class="line"></span><br><span class="line">if [ -f $sysresources ]; then</span><br><span class="line">    xrdb -merge $sysresources</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if [ -f $sysmodmap ]; then</span><br><span class="line">    xmodmap $sysmodmap</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if [ -f &quot;$userresources&quot; ]; then</span><br><span class="line">    xrdb -merge &quot;$userresources&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if [ -f &quot;$usermodmap&quot; ]; then</span><br><span class="line">    xmodmap &quot;$usermodmap&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># start some nice programs</span><br><span class="line"></span><br><span class="line">if [ -d /etc/X11/xinit/xinitrc.d ] ; then</span><br><span class="line">    for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do</span><br><span class="line">        [ -x &quot;$f&quot; ] &amp;&amp; . &quot;$f&quot;</span><br><span class="line">    done</span><br><span class="line">    unset f</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">get_session()&#123;</span><br><span class="line">    local dbus_args=(--sh-syntax --exit-with-session)</span><br><span class="line">    case $1 in</span><br><span class="line">        awesome) dbus_args+=(awesome) ;;</span><br><span class="line">        bspwm) dbus_args+=(bspwm-session) ;;</span><br><span class="line">        budgie) dbus_args+=(budgie-desktop) ;;</span><br><span class="line">        cinnamon) dbus_args+=(cinnamon-session) ;;</span><br><span class="line">        deepin) dbus_args+=(startdde) ;;</span><br><span class="line">        enlightenment) dbus_args+=(enlightenment_start) ;;</span><br><span class="line">        fluxbox) dbus_args+=(startfluxbox) ;;</span><br><span class="line">        gnome) dbus_args+=(gnome-session) ;;</span><br><span class="line">        i3|i3wm) dbus_args+=(i3 --shmlog-size 0) ;;</span><br><span class="line">        jwm) dbus_args+=(jwm) ;;</span><br><span class="line">        kde) dbus_args+=(startplasma-x11) ;;</span><br><span class="line">        lxde) dbus_args+=(startlxde) ;;</span><br><span class="line">        lxqt) dbus_args+=(lxqt-session) ;;</span><br><span class="line">        mate) dbus_args+=(mate-session) ;;</span><br><span class="line">        xfce) dbus_args+=(xfce4-session) ;;</span><br><span class="line">        openbox) dbus_args+=(openbox-session) ;;</span><br><span class="line">        *) dbus_args+=($DEFAULT_SESSION) ;;</span><br><span class="line">    esac</span><br><span class="line"></span><br><span class="line">    echo &quot;dbus-launch $&#123;dbus_args[*]&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line">exec $(get_session &quot;$1&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>开机启动项可在设置系统设置中使用GUI图形界面配置就不搞那华丽胡哨的了。</p>
+<p>安装配置完Fcitx5输入法之后重启或注销一下电脑(推荐重启)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">重启命令：reboot</span><br></pre></td></tr></table></figure>
+
+<h2 id="10-常用软件安装"><a href="#10-常用软件安装" class="headerlink" title="10.常用软件安装"></a>10.常用软件安装</h2><p><em><strong>注意：安装软件这种环节能用pacman装的就尽量不要用yay安装</strong></em></p>
+<h3 id="安装臭名昭著的勒索软件Vim（调侃话语哈哈）"><a href="#安装臭名昭著的勒索软件Vim（调侃话语哈哈）" class="headerlink" title="安装臭名昭著的勒索软件Vim（调侃话语哈哈）"></a>安装臭名昭著的勒索软件Vim（调侃话语哈哈）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S vim</span><br></pre></td></tr></table></figure>
+
+<h3 id="AUR"><a href="#AUR" class="headerlink" title="AUR"></a>AUR</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S yaourt</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="微信"><a href="#微信" class="headerlink" title="微信"></a>微信</h3><p>千万不要安装网页版的为什么呢？（现在大部分人的微信都不支持网页版微信的登陆了我自己也在内嘿嘿）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S wine-wechat</span><br><span class="line">也可以在添加或删除软件中搜索 WeChat 直接安装</span><br></pre></td></tr></table></figure>
+
+<h3 id="TIM"><a href="#TIM" class="headerlink" title="TIM"></a>TIM</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yay -S com.qq.tim.spark</span><br><span class="line"></span><br><span class="line">sudo pacman -S base-devel</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如果提示：(&#x3D;&#x3D;&gt; 错误： Cannot find the strip binary required for object file stripping.)<br>解决方法：因为没有安装 fakeroot、binutils 等打包工具，下载完了以后无法生成软件包执行以下命令安装一下完了之后再执行yay -S com.qq.tim.spaek就能安装上了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">安装打包工具：sudo pacman -S base-devel</span><br><span class="line">再次yay -S com.qq.tim.spaek安装TIM</span><br><span class="line">No</span><br><span class="line">No</span><br><span class="line">:q</span><br><span class="line">:q</span><br><span class="line">y</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Linux版QQ"><a href="#Linux版QQ" class="headerlink" title="Linux版QQ"></a>Linux版QQ</h3><p>这个东西我安装过好几次只有一次是没崩的可安装可不安装毕竟已经有TIM了，界面也不怎么好看界面太老了有种经典的感觉.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S linuxqq</span><br></pre></td></tr></table></figure>
+
+<h3 id="QQ音乐"><a href="#QQ音乐" class="headerlink" title="QQ音乐"></a>QQ音乐</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S qqmusic-bin</span><br></pre></td></tr></table></figure>
+
+<h3 id="腾讯视频"><a href="#腾讯视频" class="headerlink" title="腾讯视频"></a>腾讯视频</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S tenvideo</span><br></pre></td></tr></table></figure>
+
+<h3 id="网易云音乐"><a href="#网易云音乐" class="headerlink" title="网易云音乐"></a>网易云音乐</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S netease-cloud-music</span><br></pre></td></tr></table></figure>
+
+<p>还有个命令版的网易云音乐好像使用Python写的，（这玩意儿我也不会用）我就知道安装完成后在终端输入：musicbox启动但是我的一启动就报错不知道啥原因我一打开报错我就没看过了.</p>
+<p>使用方法链接：<a target="_blank" rel="noopener" href="https://github.com/darknessomi/musicbox/blob/master/README.md#%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE">https://github.com/darknessomi/musicbox/blob/master/README.md#%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt musicbox</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S netease-musicbox</span><br></pre></td></tr></table></figure>
+
+<h2 id="我的重点常用及开发软件："><a href="#我的重点常用及开发软件：" class="headerlink" title="我的重点常用及开发软件："></a>我的重点常用及开发软件：</h2><h3 id="JAVA-IDE"><a href="#JAVA-IDE" class="headerlink" title="JAVA IDE"></a>JAVA IDE</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S intellij-idea-ultimate-edition</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Chrome（谷歌浏览器）"><a href="#Chrome（谷歌浏览器）" class="headerlink" title="Chrome（谷歌浏览器）"></a>Chrome（谷歌浏览器）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S --noconfirm google-chrome</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Firefox（火狐浏览器）"><a href="#Firefox（火狐浏览器）" class="headerlink" title="Firefox（火狐浏览器）"></a>Firefox（火狐浏览器）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1：安装浏览器</span><br><span class="line">sudo pacman -S --noconfirm firefox</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2:安装中文插件(系统自带的火狐是英文的)</span><br><span class="line">sudo pacman -S --nocnofirm firefox-i18n-zh-cn</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3:完整命令</span><br><span class="line">sudo pacman -S --noconfirm firefox firefox-i18n-zh-cn</span><br></pre></td></tr></table></figure>
+
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="思维导图-xmind"><a href="#思维导图-xmind" class="headerlink" title="思维导图 xmind"></a>思维导图 xmind</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S xmind</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Typora（arkdown编写神器）"><a href="#Typora（arkdown编写神器）" class="headerlink" title="Typora（arkdown编写神器）"></a>Typora（arkdown编写神器）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S typora</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="wps："><a href="#wps：" class="headerlink" title="wps："></a>wps：</h3><p>wps我是通过yay搜索安装的第二个包</p>
+<p>1.搜索安装wps</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -s wps-office</span><br></pre></td></tr></table></figure>
+
+<p>2.安装缺失字体</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S ttf-wps-fonts</span><br></pre></td></tr></table></figure>
+
+<p>3.安装中文字体</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S wps-office-mui-zh-cn</span><br></pre></td></tr></table></figure>
+
+<p>4.解决无法输入中文的问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /usr/bin/wps</span><br></pre></td></tr></table></figure>
+
+<p>在第一行（<code>#!/bin/bash</code>）下面添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export XMODIFIERS=&quot;@im=fcitx&quot;</span><br><span class="line">export QT_IM_MODULE=&quot;fcitx&quot;</span><br><span class="line">gOpt=</span><br><span class="line">#gOptExt=-multiply</span><br><span class="line">gTemplateExt=(&quot;wpt&quot; &quot;dot&quot; &quot;dotx&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">export GTK_IM_MODULE=fcitx</span><br><span class="line">export QT_IM_MODULE=fcitx</span><br><span class="line">export XMODIFIERS=&quot;@im=fcitx&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Vscode"><a href="#Vscode" class="headerlink" title="Vscode"></a>Vscode</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S visual-studio-code-bin</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S nodejs</span><br></pre></td></tr></table></figure>
+
+<h3 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S jdk8-openjdk</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="PyCharm"><a href="#PyCharm" class="headerlink" title="PyCharm"></a>PyCharm</h3><p>这个安装的哪个包记不清了去添加&#x2F;删除软件中傻瓜式的搜索一下安装就行虽然比不过命令高效</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S pycharm-professional</span><br></pre></td></tr></table></figure>
+
+<h3 id="抓包工具"><a href="#抓包工具" class="headerlink" title="抓包工具"></a>抓包工具</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S wireshark-qt</span><br></pre></td></tr></table></figure>
+
+<h3 id="git管理工具"><a href="#git管理工具" class="headerlink" title="git管理工具"></a>git管理工具</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S gitkraken</span><br></pre></td></tr></table></figure>
+
+<h3 id="翻译、取词"><a href="#翻译、取词" class="headerlink" title="翻译、取词"></a>翻译、取词</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S goldendict</span><br></pre></td></tr></table></figure>
+
+<h3 id="FTP、SFTP"><a href="#FTP、SFTP" class="headerlink" title="FTP、SFTP"></a>FTP、SFTP</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S filezilla</span><br></pre></td></tr></table></figure>
+
+<h3 id="下载软件"><a href="#下载软件" class="headerlink" title="下载软件"></a>下载软件</h3><p>aria2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S aria2</span><br></pre></td></tr></table></figure>
+
+<p>axel</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S axel</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="sublime-text-4"><a href="#sublime-text-4" class="headerlink" title="sublime-text-4"></a>sublime-text-4</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S sublime-text-4</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="图形编辑器gimp"><a href="#图形编辑器gimp" class="headerlink" title="图形编辑器gimp"></a>图形编辑器gimp</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S gimp</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="终端复用工具tmux"><a href="#终端复用工具tmux" class="headerlink" title="终端复用工具tmux"></a>终端复用工具tmux</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S tmux</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="虚拟机virtualbox"><a href="#虚拟机virtualbox" class="headerlink" title="虚拟机virtualbox"></a>虚拟机virtualbox</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S virtualbox</span><br></pre></td></tr></table></figure>
+
+<p>vmware-workstation</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S vmware-workstation</span><br></pre></td></tr></table></figure>
+
+<h3 id="simplescreenrecorder录频软件"><a href="#simplescreenrecorder录频软件" class="headerlink" title="simplescreenrecorder录频软件"></a>simplescreenrecorder录频软件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S simplescreenrecorder-git</span><br></pre></td></tr></table></figure>
+
+<p>inux系统因为intel显卡导致部分录屏软件(Peek、Simplescreenrecorder)闪屏花屏的解决方法：</p>
+<p>其实也不全是显卡问题，主要是因为桌面的问题，桌面如何显示图形决定了录屏软件即时渲染的正确与否。<br>文本仅对使用intel集显的设备有效！！！<br>添加配置文件，修改显示驱动：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/X11/xorg.conf.d/00-modesetting.conf</span><br></pre></td></tr></table></figure>
+
+<p>添加以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Section &quot;Device&quot;</span><br><span class="line">        Identifier &quot;Intel&quot;</span><br><span class="line">        Driver &quot;modesetting&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
+
+<p>注销或重启即可生效。<br> 可用<code>inxi -G</code>查看当前生效的驱动：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[machilus@Lucky-machilus ~]$ inxi -G</span><br><span class="line">Graphics:  Device-1: Intel Iris Xe Graphics driver: i915 v: kernel </span><br><span class="line">           Device-2: Chicony Chicony USB2.0 Camera type: USB driver: uvcvideo </span><br><span class="line">           Display: x11 server: X.Org 1.20.11 driver: loaded: modesetting resolution: 1920x1080~60Hz </span><br><span class="line">           OpenGL: renderer: Mesa Intel Xe Graphics (TGL GT2) v: 4.6 Mesa 21.0.3</span><br></pre></td></tr></table></figure>
+
+<h3 id="dock栏"><a href="#dock栏" class="headerlink" title="dock栏"></a>dock栏</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S latte-dock</span><br></pre></td></tr></table></figure>
+
+<h3 id="火焰截图flameshot"><a href="#火焰截图flameshot" class="headerlink" title="火焰截图flameshot"></a>火焰截图flameshot</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S flameshot</span><br></pre></td></tr></table></figure>
+
+<h3 id="uTools小工具（除了占用资源有点高其它都还好笔记本的话不建议给开机自启动耗电快插上电源后如果要使用的话再手动打开也不迟）"><a href="#uTools小工具（除了占用资源有点高其它都还好笔记本的话不建议给开机自启动耗电快插上电源后如果要使用的话再手动打开也不迟）" class="headerlink" title="uTools小工具（除了占用资源有点高其它都还好笔记本的话不建议给开机自启动耗电快插上电源后如果要使用的话再手动打开也不迟）"></a>uTools小工具（除了占用资源有点高其它都还好笔记本的话不建议给开机自启动耗电快插上电源后如果要使用的话再手动打开也不迟）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S utools</span><br></pre></td></tr></table></figure>
+
+<h3 id="scrcpy"><a href="#scrcpy" class="headerlink" title="scrcpy"></a>scrcpy</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S scrcpy</span><br></pre></td></tr></table></figure>
+
+<p>使用数据线将手机与电脑连接USB连接模式选择  MTP模式（传输文件）</p>
+<p>终端输入：scrcpy即可启动</p>
+<h2 id="11-KDE美化"><a href="#11-KDE美化" class="headerlink" title="11.KDE美化"></a>11.KDE美化</h2><h3 id="安装终端显示信息neofetch"><a href="#安装终端显示信息neofetch" class="headerlink" title="安装终端显示信息neofetch"></a>安装终端显示信息neofetch</h3><p>(装b神器,安装screenfetch也可)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S neofetch</span><br><span class="line">sudo pacman -S screenfetch</span><br><span class="line"></span><br><span class="line">输出系统信息：</span><br><span class="line"> screenfetch -Arch</span><br><span class="line"> neofetch</span><br><span class="line"> screenfetch</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="安装PowerLevel10k主题"><a href="#安装PowerLevel10k主题" class="headerlink" title="安装PowerLevel10k主题"></a>安装PowerLevel10k主题</h3><p>运行<code>sudo pacman -S nerd-fonts-complete</code>安装字体<br>运行以下命令安装powerlevel10k主题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $&#123;ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom&#125;/themes/powerlevel10k</span><br></pre></td></tr></table></figure>
+
+<p>配置powerlevel10k</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;source ~/powerlevel10k/powerlevel10k.zsh-theme&#x27; &gt;&gt;! ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>在~&#x2F;.zshrc写入<code>ZSH_THEME=&quot;powerlevel10k/powerlevel10k&quot;</code><br> 安装后重新打开终端，并更改终端字体为hack</p>
+<p>如需重新配置powerlevel10k主题，可随时运行<code>p10k configure</code></p>
+<h3 id="安装自动补全插件"><a href="#安装自动补全插件" class="headerlink" title="安装自动补全插件"></a>安装自动补全插件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
+
+<p>添加<code>plugins=(zsh-autosuggestions git)</code></p>
+<h3 id="安装语法高亮插件"><a href="#安装语法高亮插件" class="headerlink" title="安装语法高亮插件"></a>安装语法高亮插件</h3><p>运行以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
+
+<p>配值插件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh&quot; &gt;&gt; $&#123;ZDOTDIR:-$HOME&#125;/.zshrc</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装colorls插件"><a href="#安装colorls插件" class="headerlink" title="安装colorls插件"></a>安装colorls插件</h3><p>运行<code>sudo pacman -S ruby</code>安装Ruby Gem<br> 运行<code>gem install colorls</code>，用gem安装colorls(确保已安装nerd-fonts字体，不然会乱码)<br> 如果安装速度慢，可以<a target="_blank" rel="noopener" href="https://mirror.tuna.tsinghua.edu.cn/help/rubygems/">点击这里</a>切换为清华源<br> 安装成功以后将下面几行写入<code>~/.zshrc</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alias ls=colorls</span><br><span class="line">alias ll=&quot;colorls -l&quot;</span><br><span class="line">alias la=&quot;colorls -a&quot;</span><br></pre></td></tr></table></figure>
+
+<p>运行<code>source ~/.zshrc</code>使配置立即生效</p>
+<h3 id="sudo输入密码显示星号-可选"><a href="#sudo输入密码显示星号-可选" class="headerlink" title="sudo输入密码显示星号(可选)"></a>sudo输入密码显示星号(可选)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">运行命令sudo vim /etc/sudoers</span><br><span class="line">添加以下内容Defaults env_reset,pwfeedback</span><br></pre></td></tr></table></figure>
+
+<h3 id="vimplus-可选"><a href="#vimplus-可选" class="headerlink" title="vimplus(可选)"></a>vimplus(可选)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">运行git clone https://github.com/chxuan/vimplus.git ~/.vimplus，从github克隆</span><br><span class="line">运行sh ~/.vimplus/install.sh安装vimplus（可能需要五分钟左右，取决于你的网速）</span><br><span class="line">运行sudo sh ~/.vimplus/install_to_user.sh username root安装到root用户</span><br><span class="line">运行sh ~/.vimplus/update.sh更新vimplus</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><p>美化的话随便搞搞就行了不要花太多时间在美化上面，搞不好下次开机就没了。</p>
+<p>终端zsh没必要华丽胡哨的不好看还麻烦，就默认终端修改下背景颜色和字体之类的就行了</p>
+<h3 id="中文字体包"><a href="#中文字体包" class="headerlink" title="中文字体包"></a>中文字体包</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S wqy-zenhei</span><br><span class="line">sudo pacman -S wqy-bitmapfont</span><br><span class="line">sudo pacman -S wqy-microhei</span><br><span class="line">sudo pacman -S ttf-wps-fonts</span><br><span class="line">sudo pacman -S adobe-source-han-sans-cn-fonts</span><br><span class="line">sudo pacman -S adobe-source-han-serif-cn-fonts</span><br></pre></td></tr></table></figure>
+
+<h3 id="一款速度更快的-ssh-工具，网络不稳定时使用有奇效"><a href="#一款速度更快的-ssh-工具，网络不稳定时使用有奇效" class="headerlink" title="一款速度更快的 ssh 工具，网络不稳定时使用有奇效"></a>一款速度更快的 ssh 工具，网络不稳定时使用有奇效</h3><p>mosh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S mosh</span><br></pre></td></tr></table></figure>
+
+<p>wps</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">yay -S wps-office</span><br><span class="line">或者是</span><br><span class="line">yay-s wps-office第二包</span><br><span class="line"></span><br><span class="line">2.</span><br><span class="line">安装字体</span><br><span class="line">sudo pacman -S ttf-wps-fonts</span><br><span class="line"></span><br><span class="line">3.解决wps菜单栏为英文的问题</span><br><span class="line">pacman -Ss wps|grep zh   #查看可用的语言包</span><br><span class="line">yay -s wps-office-mui-zh-cn #安装wpsUI中文字体包</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Machilus</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/11/23/ArchLinux%E5%8F%91%E8%A1%8C%E7%89%88ManjaroKDE%E9%85%8D%E7%BD%AE/">http://example.com/2022/11/23/ArchLinux%E5%8F%91%E8%A1%8C%E7%89%88ManjaroKDE%E9%85%8D%E7%BD%AE/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">风住尘香花已尽</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/11/23/hello-world/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Machilus</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ArchLinux%E5%8F%91%E8%A1%8C%E7%89%88ManjaroKDE%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">ArchLinux发行版ManjaroKDE配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%88%97%E5%87%BA%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E5%9C%B0%E5%9D%80%E9%80%89%E6%8B%A9%E5%B9%B6%E8%B7%9F%E6%8D%A2%E9%80%82%E5%90%88%E8%87%AA%E5%B7%B1%E6%89%80%E5%9C%A8%E5%9C%B0%E5%8C%BA%E7%9A%84%E6%BA%90"><span class="toc-number">1.1.</span> <span class="toc-text">1、列出国内镜像地址选择并跟换适合自己所在地区的源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%88-x2F-etc-x2F-pacman-conf%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">2.修改配置文件（&#x2F;etc&#x2F;pacman.conf）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%9B%B4%E6%96%B0%E8%BD%AF%E4%BB%B6%E6%BA%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%BF%E5%85%B6%E7%94%9F%E6%95%88"><span class="toc-number">1.3.</span> <span class="toc-text">3.更新软件源配置文件使其生效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%90%8C%E6%AD%A5%E8%BD%AF%E4%BB%B6%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93"><span class="toc-number">1.4.</span> <span class="toc-text">4.同步软件数据仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%B3%BB%E7%BB%9F%E5%8D%87%E7%BA%A7"><span class="toc-number">1.5.</span> <span class="toc-text">5.系统升级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%85%A8%E9%9D%A2%E6%9B%B4%E6%96%B0%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.6.</span> <span class="toc-text">6.全面更新系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%AE%89%E8%A3%85archlinuxcn-keyring%E5%8C%85%E5%AF%BC%E5%85%A5GPG-key"><span class="toc-number">1.7.</span> <span class="toc-text">7.安装archlinuxcn-keyring包导入GPG key</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%AE%89%E8%A3%85AUR%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7yay"><span class="toc-number">1.8.</span> <span class="toc-text">8.安装AUR包管理工具yay</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%AE%89%E8%A3%85Fcitx5%E8%BE%93%E5%85%A5%E6%B3%95"><span class="toc-number">1.9.</span> <span class="toc-text">9.安装Fcitx5输入法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1-%E9%A6%96%E5%85%88%E5%8D%B8%E8%BD%BDFcitx4%E7%89%88%E6%9C%AC%E7%9A%84%E5%A5%97%E4%BB%B6"><span class="toc-number">1.9.0.1.</span> <span class="toc-text">9.1:首先卸载Fcitx4版本的套件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-2-%E5%AE%89%E8%A3%85Fcitx5"><span class="toc-number">1.9.0.2.</span> <span class="toc-text">9.2:安装Fcitx5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-3-%E5%86%99%E5%85%A5%E9%85%8D%E7%BD%AE-x2F-xprofile"><span class="toc-number">1.9.0.3.</span> <span class="toc-text">9.3:写入配置(~&#x2F;.xprofile)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-4-%E7%BC%96%E8%BE%91%E6%96%87%E4%BB%B6-x2F-xinitrc"><span class="toc-number">1.9.0.4.</span> <span class="toc-text">9.4:编辑文件(~&#x2F;.xinitrc)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-number">1.10.</span> <span class="toc-text">10.常用软件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%87%AD%E5%90%8D%E6%98%AD%E8%91%97%E7%9A%84%E5%8B%92%E7%B4%A2%E8%BD%AF%E4%BB%B6Vim%EF%BC%88%E8%B0%83%E4%BE%83%E8%AF%9D%E8%AF%AD%E5%93%88%E5%93%88%EF%BC%89"><span class="toc-number">1.10.1.</span> <span class="toc-text">安装臭名昭著的勒索软件Vim（调侃话语哈哈）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AUR"><span class="toc-number">1.10.2.</span> <span class="toc-text">AUR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1"><span class="toc-number">1.10.3.</span> <span class="toc-text">微信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TIM"><span class="toc-number">1.10.4.</span> <span class="toc-text">TIM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%89%88QQ"><span class="toc-number">1.10.5.</span> <span class="toc-text">Linux版QQ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#QQ%E9%9F%B3%E4%B9%90"><span class="toc-number">1.10.6.</span> <span class="toc-text">QQ音乐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%85%BE%E8%AE%AF%E8%A7%86%E9%A2%91"><span class="toc-number">1.10.7.</span> <span class="toc-text">腾讯视频</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90"><span class="toc-number">1.10.8.</span> <span class="toc-text">网易云音乐</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E9%87%8D%E7%82%B9%E5%B8%B8%E7%94%A8%E5%8F%8A%E5%BC%80%E5%8F%91%E8%BD%AF%E4%BB%B6%EF%BC%9A"><span class="toc-number">1.11.</span> <span class="toc-text">我的重点常用及开发软件：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JAVA-IDE"><span class="toc-number">1.11.1.</span> <span class="toc-text">JAVA IDE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chrome%EF%BC%88%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%89"><span class="toc-number">1.11.2.</span> <span class="toc-text">Chrome（谷歌浏览器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Firefox%EF%BC%88%E7%81%AB%E7%8B%90%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%89"><span class="toc-number">1.11.3.</span> <span class="toc-text">Firefox（火狐浏览器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.11.4.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-xmind"><span class="toc-number">1.11.5.</span> <span class="toc-text">思维导图 xmind</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Typora%EF%BC%88arkdown%E7%BC%96%E5%86%99%E7%A5%9E%E5%99%A8%EF%BC%89"><span class="toc-number">1.11.6.</span> <span class="toc-text">Typora（arkdown编写神器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wps%EF%BC%9A"><span class="toc-number">1.11.7.</span> <span class="toc-text">wps：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vscode"><span class="toc-number">1.11.8.</span> <span class="toc-text">Vscode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nodejs"><span class="toc-number">1.11.9.</span> <span class="toc-text">nodejs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK"><span class="toc-number">1.11.10.</span> <span class="toc-text">JDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PyCharm"><span class="toc-number">1.11.11.</span> <span class="toc-text">PyCharm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7"><span class="toc-number">1.11.12.</span> <span class="toc-text">抓包工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">1.11.13.</span> <span class="toc-text">git管理工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BF%BB%E8%AF%91%E3%80%81%E5%8F%96%E8%AF%8D"><span class="toc-number">1.11.14.</span> <span class="toc-text">翻译、取词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FTP%E3%80%81SFTP"><span class="toc-number">1.11.15.</span> <span class="toc-text">FTP、SFTP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E8%BD%AF%E4%BB%B6"><span class="toc-number">1.11.16.</span> <span class="toc-text">下载软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sublime-text-4"><span class="toc-number">1.11.17.</span> <span class="toc-text">sublime-text-4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E7%BC%96%E8%BE%91%E5%99%A8gimp"><span class="toc-number">1.11.18.</span> <span class="toc-text">图形编辑器gimp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8%E5%B7%A5%E5%85%B7tmux"><span class="toc-number">1.11.19.</span> <span class="toc-text">终端复用工具tmux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BAvirtualbox"><span class="toc-number">1.11.20.</span> <span class="toc-text">虚拟机virtualbox</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#simplescreenrecorder%E5%BD%95%E9%A2%91%E8%BD%AF%E4%BB%B6"><span class="toc-number">1.11.21.</span> <span class="toc-text">simplescreenrecorder录频软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dock%E6%A0%8F"><span class="toc-number">1.11.22.</span> <span class="toc-text">dock栏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%81%AB%E7%84%B0%E6%88%AA%E5%9B%BEflameshot"><span class="toc-number">1.11.23.</span> <span class="toc-text">火焰截图flameshot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uTools%E5%B0%8F%E5%B7%A5%E5%85%B7%EF%BC%88%E9%99%A4%E4%BA%86%E5%8D%A0%E7%94%A8%E8%B5%84%E6%BA%90%E6%9C%89%E7%82%B9%E9%AB%98%E5%85%B6%E5%AE%83%E9%83%BD%E8%BF%98%E5%A5%BD%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9A%84%E8%AF%9D%E4%B8%8D%E5%BB%BA%E8%AE%AE%E7%BB%99%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8%E8%80%97%E7%94%B5%E5%BF%AB%E6%8F%92%E4%B8%8A%E7%94%B5%E6%BA%90%E5%90%8E%E5%A6%82%E6%9E%9C%E8%A6%81%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AF%9D%E5%86%8D%E6%89%8B%E5%8A%A8%E6%89%93%E5%BC%80%E4%B9%9F%E4%B8%8D%E8%BF%9F%EF%BC%89"><span class="toc-number">1.11.24.</span> <span class="toc-text">uTools小工具（除了占用资源有点高其它都还好笔记本的话不建议给开机自启动耗电快插上电源后如果要使用的话再手动打开也不迟）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scrcpy"><span class="toc-number">1.11.25.</span> <span class="toc-text">scrcpy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-KDE%E7%BE%8E%E5%8C%96"><span class="toc-number">1.12.</span> <span class="toc-text">11.KDE美化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%BB%88%E7%AB%AF%E6%98%BE%E7%A4%BA%E4%BF%A1%E6%81%AFneofetch"><span class="toc-number">1.12.1.</span> <span class="toc-text">安装终端显示信息neofetch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85PowerLevel10k%E4%B8%BB%E9%A2%98"><span class="toc-number">1.12.2.</span> <span class="toc-text">安装PowerLevel10k主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8%E6%8F%92%E4%BB%B6"><span class="toc-number">1.12.3.</span> <span class="toc-text">安装自动补全插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E6%8F%92%E4%BB%B6"><span class="toc-number">1.12.4.</span> <span class="toc-text">安装语法高亮插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85colorls%E6%8F%92%E4%BB%B6"><span class="toc-number">1.12.5.</span> <span class="toc-text">安装colorls插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sudo%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E6%98%BE%E7%A4%BA%E6%98%9F%E5%8F%B7-%E5%8F%AF%E9%80%89"><span class="toc-number">1.12.6.</span> <span class="toc-text">sudo输入密码显示星号(可选)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vimplus-%E5%8F%AF%E9%80%89"><span class="toc-number">1.12.7.</span> <span class="toc-text">vimplus(可选)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-1"><span class="toc-number">1.12.8.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%87%E5%AD%97%E4%BD%93%E5%8C%85"><span class="toc-number">1.12.9.</span> <span class="toc-text">中文字体包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E6%AC%BE%E9%80%9F%E5%BA%A6%E6%9B%B4%E5%BF%AB%E7%9A%84-ssh-%E5%B7%A5%E5%85%B7%EF%BC%8C%E7%BD%91%E7%BB%9C%E4%B8%8D%E7%A8%B3%E5%AE%9A%E6%97%B6%E4%BD%BF%E7%94%A8%E6%9C%89%E5%A5%87%E6%95%88"><span class="toc-number">1.12.10.</span> <span class="toc-text">一款速度更快的 ssh 工具，网络不稳定时使用有奇效</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/23/ArchLinux%E5%8F%91%E8%A1%8C%E7%89%88ManjaroKDE%E9%85%8D%E7%BD%AE/" title="ArchLinux发行版ManjaroKDE配置"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ArchLinux发行版ManjaroKDE配置"/></a><div class="content"><a class="title" href="/2022/11/23/ArchLinux%E5%8F%91%E8%A1%8C%E7%89%88ManjaroKDE%E9%85%8D%E7%BD%AE/" title="ArchLinux发行版ManjaroKDE配置">ArchLinux发行版ManjaroKDE配置</a><time datetime="2022-11-23T14:51:09.000Z" title="发表于 2022-11-23 22:51:09">2022-11-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/23/hello-world/" title="Hello World"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2022/11/23/hello-world/" title="Hello World">Hello World</a><time datetime="2022-11-23T12:48:53.687Z" title="发表于 2022-11-23 20:48:53">2022-11-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Machilus</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
